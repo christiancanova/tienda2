@@ -23,7 +23,7 @@ app.use(session(
         resave: true,
         saveUninitialized: true,
         store: MongoStore.create({
-            mongoUrl: `mongodb+srv://ccanova:Ca1992db85@cluster0.tgef3ye.mongodb.net/?retryWrites=true&w=majority`,
+            mongoUrl: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@cluster0.tgef3ye.mongodb.net/?retryWrites=true&w=majority`,
             ttl: 60 * 10 // 10 minutes
             })
     }
@@ -39,10 +39,59 @@ app.set('view engine', 'ejs');
 /** Routes */
 app.use('/', apiRoutes);
 
+/** yargs */
+
+import parseArgs from 'yargs/yargs'
+
+const yargs = parseArgs(process.argv.slice(2))
+console.log(yargs.argv);
+
+/** los argumentos 'sueltos' estan dentro de un array
+ *  y los argumentos 'key-value' estan dentro de un objeto
+ * 
+ * ❯ node yargs.js 123 -m dev -p 8080
+     { _: [ 123 ], m: 'dev', p: 8080, '$0': 'yargs.js' }
+ */
+
+/**Entre el yargs y el .argv puedo agregar alias y valores default */
+const args = yargs
+  .alias({ m: "mode", p: "port", d: "debug" })
+  .default({ m: "dev", p: 8080, d: false }).argv;
 
 
-const PORT = 8080;
+
+
+
+const PORT = args;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${args.port}`);
     }
 );
+
+import { exec } from "child_process";
+import { stdout, stderr } from "process";
+
+/**routes */
+import indexRoutes from "./src/routes/indexRoutes.js";
+app.use("/", indexRoutes);
+
+/** 💡 Métodos del objeto process 
+process.exit(); //Cierra el proceso
+// documentacion: https://nodejs.org/api/process.html
+process.on("exit", () => {
+  console.log("Se ha cerrado el proceso");
+}); //Se ejecuta cuando el proceso se cierra
+process.on("beforeExit", () => {
+    console.log("Se va a cerrar el proceso");
+});
+*/
+/** 💡 Métodos de child process */
+// exec("ls", (err, stdout, stderr) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   if (stderr) {
+//     console.log(stderr);
+//   }
+//   console.log(stdout);
+// });

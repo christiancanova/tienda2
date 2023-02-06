@@ -4,7 +4,7 @@ const MONGO_PASS = process.env.MONGO_PASS;
 const DB_NAME = process.env.DB_NAME;
 
 mongoose.connect(
-    `mongodb+srv://ccanova:Ca1992db85@cluster0.tgef3ye.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@cluster0.tgef3ye.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
 )
     .then(() => console.log("Connected to MongoDB"))

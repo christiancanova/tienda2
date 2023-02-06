@@ -7,7 +7,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
-    
   },
   "repository": {
     "type": "git",
@@ -46,7 +45,8 @@
     "pug": "^3.0.2",
     "session-file-store": "^1.5.0",
     "socket.io": "^4.5.4",
-    "sqlite3": "^5.1.4"
+    "sqlite3": "^5.1.4",
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"

@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/christiancanova/tiendabackend.git"
+    "url": "git+https://github.com/christiancanova/tienda2"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/christiancanova/tiendabackend/issues"
+    "url": "https://github.com/christiancanova/tienda2/issues"
   },
-  "homepage": "https://github.com/christiancanova/tiendabackend#readme",
+  "homepage": "https://github.com/christiancanova/tienda2#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bulma": "^0.9.4",

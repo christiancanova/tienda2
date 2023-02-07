@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { fork } from "child_process";
+import os from "os"; // es propia de node para obtener informacion del sistema
+const nroCPUs = os.cpus().length;
 const router = Router();
 
 const info = {
@@ -11,7 +13,9 @@ const info = {
   "Memoria total reservada (rss)": process.memoryUsage().rss,
   "path de ejecución": process.execPath, //donde está el ejecutable de node
   "Argumentos de entrada": process.argv,
+  CPUs: nroCPUs,
 };
+
 router.get("/infos", (req, res) => {
   res.send(info);
 });

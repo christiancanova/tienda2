@@ -1,0 +1,17 @@
+<%- include('./partials/header.ejs') %>
+<body><center>
+  <div class="card" style="width: 18rem">
+  <div class="card-body">
+    <img src="/users_photos/<%= user.photo %>"
+    class="card-img-top" alt="..." />
+    <h5 id=" <%= user.name %>" class="card-title">Nombre: <%= user.name %></h5>
+    <p class="card-text">Telefono: <%= user.phone %></p>
+    <p class="card-text">Fecha de nacimiento: <%= user.birthDate %></p>
+    <p class="card-text">Dirección: <%= user.address %></p>
+    <a href="/" class="btn btn-primary">Volver a inicio</a>
+  </div>
+</div></center>
+</body>
+</html>
+<script>
+</script>

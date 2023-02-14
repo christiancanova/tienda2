@@ -1,0 +1,55 @@
+<%- include('./partials/header.ejs') %>
+
+  <body>
+    
+    <center><h1>Carrito</h1></center>
+    <div class="bg-dark text-light container">
+      <div class="row border-bottom">
+        <div class="col-4 p-4 fw-bold">Nombre</div>
+        <div class="col-4 p-4 fw-bold">Precio</div>
+        <div class="col-4 p-4 fw-bold">Cantidad</div>
+      </div>
+      <% cartArr.forEach(function(cartItem) { %>
+      <div class="row border-bottom">
+        <div class="col-4 p-4"><%= cartItem.product.name %></div>
+        <div class="col-4 p-4"><%= cartItem.product.price %></div>
+        <div class="col-4 p-4"><%= cartItem.quantity %></div>
+        <button
+            class="btn btn-success my-3 borrar"
+            id=<%= cartItem.id %>
+            
+          >
+         Remover del carrito
+        </button>
+      </div>
+      <% }) %>
+    </div>
+    <center><button class="btn btn-success my-3 comprar">Comprar</button>
+    <a href="/" class="btn btn-primary">Volver a inicio</a></center>
+  </body>
+</html>
+<script>
+  const deleteBtn = document.querySelectorAll('.borrar')
+  deleteBtn.forEach(x=>{
+    x.addEventListener('click', async ()=>{
+      const id = x.id
+      const res = await fetch('http://localhost:8080/cart/' + id, {
+        method : 'DELETE'
+      })
+      if(res.redirected){
+        window.location.href = res.url
+      }
+    })
+  })
+  const buyBtn = document.querySelector('.comprar')
+  buyBtn.addEventListener('click', async ()=>{
+    const res = await fetch('http://localhost:8080/order', {
+      method : 'POST'
+    })
+    console.log(res)
+    if(res.redirected){
+        window.location.href = res.url
+      }
+  })
+  
+</script>

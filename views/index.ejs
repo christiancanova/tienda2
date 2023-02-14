@@ -1,0 +1,46 @@
+<%- include('./partials/header.ejs') %>
+
+  <body>
+    <center><div class="bienvenido">
+      <div>
+        <h1 class="fw-bold logged-message">Bienvenido <%= user.name %></h1>
+      </div>
+      <a href="/cart"
+        ><button class="btn btn-primary desloguear">Ver carrito</button></a
+      >
+      <a href="/logout"
+        ><button class="btn btn-primary desloguear">Desloguear</button></a
+      >
+      <a href="/profile"
+      ><button class="btn btn-primary desloguear">Mi perfil</button></a
+    >
+    </div></center>
+    <br>
+    <div class="bg-dark text-light container">
+      <div class="row border-bottom">
+        <div class="col-4 p-4 fw-bold">Nombre</div>
+        <div class="col-4 p-4 fw-bold">Precio</div>
+        <div class="col-4 p-4 fw-bold">Foto</div>
+      </div>
+      <% productsDTO.forEach(function(product) { %>
+      <div class="row border-bottom">
+        <div class="col-4 p-4"><%= product.name %></div>
+        <div class="col-4 p-4"><%= product.price %></div>
+        <div class="col-4 p-4">
+          <img
+            width="50"
+            src="<%= product.img %>"
+            alt="not found"
+          />
+        </div>
+        <button
+            class="btn btn-success my-3"
+            onclick="location.href = 'products/list/<%= product.id %>'"
+          >
+         Ver producto
+        </button>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

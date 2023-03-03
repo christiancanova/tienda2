@@ -43,4 +43,3 @@ export async function getCartProducts(req, res) {
       return res.status(500).json({ error_description: 'Error del servidor.' });
     }
   }
-  

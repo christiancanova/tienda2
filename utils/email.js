@@ -1,46 +1,47 @@
 // import { createTransport } from "nodemailer";
 import nodemailer from "nodemailer";
-import config from '../config/emailConfig.js'
+import emailConfig from "../config/emailConfig.js";
 import logger from "./winston.js";
 
-const TEST_EMAIL = 'ccanova@live.com.ar'    
-let testAccount = await nodemailer.createTestAccount();
+const TEST_EMAIL = 'arvilla.baumbach81@ethereal.email'    
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
+    host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: testAccount.user,
-        pass: testAccount.pass,
+        user: 'arvilla.baumbach81@ethereal.email',
+        pass: 'YT2xZNnUmHdv7vmFtJ',
     },
 });
 
 export async function signUpEmail(newUser){
     const mailOptions = {
-          from:'Christian <ccanova@live.com.ar>',
-          to: `${newUser.mail}`,
-          subject: "DOLCE: Confirmacion de cuenta",
-          html: `
-            <h1>Hola ${newUser.name}</h1> 
-            <p>Gracias por registrarte en DOLCE</p>
-            <p>EMAIL: ${newUser.mail}</p>
-            <p>Si no creaste esta cuenta puedes ignorar el mensaje</p>
-            `
-    };
-        try{
-            await transporter.sendMail(mailOptions);
-        }catch(error){
-            logger.error(`Error al enviar el email: ${error}`);
-        }
-    };
+        from: 'Administracion <arvilla.baumbach81@ethereal.email>',
+        to: TEST_EMAIL,
+        subject: "Nuevo registro",
+        html: `
+        <h1>Nuevo usuario registrado</h1>
+        <p>Se registro el usuario ${newUser.name}</p>
+        <p>Su correo es ${newUser.mail} y su contraseña es ${newUser.password}(encriptada)</p>
+        <p> Vive en ${newUser.address}</p>
+        <p>Su telefono es +${newUser.phone}</p>
+        <p>Su avatar o foto subida: </p><img src=".\\${newUser.photo}"/>
+        `,
+    }
+    try{
+        await transporter.sendMail(mailOptions);
+    }catch(error){
+        logger.error(`Error al enviar el email: ${error}`);
+    }
+}
 
-    export async function checkOutEMail(newOrder){
+    export  async function checkOutEMail(newOrder){
         const mailOptions = {
-            from:'Christian <ccanova@live.com.ar>',
+            from:'Administradora Tienda  <arvilla.baumbach81@ethereal.email>',
             to: TEST_EMAIL,
             subject: `nuevo pedido de ${newOrder.userName}, ${newOrder.userEmail}`,
-            html: `<h1>Tu nuevo pedido a sido generado con exito</h1>
-            ${newOrder.products.map(x=>`<li>${x.products}, cantidad: ${x.quantity}</li>`)}
+            html: `<h1>Pedido</h1>
+            ${newOrder.products.map(x=>`<li>${x.product}, cantidad: ${x.quantity}</li>`)}
             `,
         }
         try {

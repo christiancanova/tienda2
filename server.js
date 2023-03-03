@@ -65,7 +65,7 @@ app.use(cors(`${process.env.PORT}`));
 app.use(cookieParser());
 
 // Variable Global
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT;
 
 // Rutas
 router(app);

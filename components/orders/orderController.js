@@ -3,6 +3,7 @@ import Products from "../products/productModel.js";
 import moment from "moment";
 import logger from "../../utils/winston.js";
 import { checkOutEMail } from "../../utils/email.js";
+import { checkOutSms, checkOutWhatsapp } from "../../utils/msgWhassap.js";
 
 export async function checkOut(req, res) {
     const user = req.user;
@@ -26,6 +27,8 @@ export async function checkOut(req, res) {
       });
       user.cart = [];
       checkOutEMail(newOrder);
+      checkOutSms(user.phone);
+      checkOutWhatsapp(newOrder)
       await user.save();
       await newOrder.save();
       res.redirect('/orderSuccess');

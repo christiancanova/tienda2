@@ -2,7 +2,7 @@ import twilio from "twilio";
 import logger from "./winston.js";
 
 const accountSid = 'AC643ff7ddd43d27909d1123f1ecd8f778'; 
-const authToken = 'adee377ba36bcaadb16ad898485c231b'; 
+const authToken = process.env.AUTH
 const client = twilio(accountSid, authToken);
    
  

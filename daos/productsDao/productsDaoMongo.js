@@ -1,5 +1,5 @@
 import Products from '../../components/products/productModel.js';
-import logger from '../../utils/winston.js';
+import logger from '../../services/winston.js';
 
 class productsDaoMongo {
   constructor() {

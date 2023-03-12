@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { isAuth } from "../../utils/Auth.js";
+import { isAuth } from "../../services/Auth.js";
 import {getCartProducts, deleteProduct} from './cartController.js'
 
 const cartRouter = new Router();

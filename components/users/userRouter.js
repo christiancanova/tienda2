@@ -3,7 +3,7 @@ import passport from 'passport';
 import isRegistered from './utils/isRegistered.js';
 import {signUp } from './userController.js'
 import multer from './utils/multer.js'
-import { isAuth, isNotAuth} from '../../utils/Auth.js'
+import { isAuth, isNotAuth} from '../../services/Auth.js'
 
 const userRouter = new Router();
 

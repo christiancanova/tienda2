@@ -1,9 +1,9 @@
 import Orders from "./orderModel.js";
 import Products from "../products/productModel.js";
 import moment from "moment";
-import logger from "../../utils/winston.js";
-import { checkOutEMail } from "../../utils/email.js";
-import { checkOutSms, checkOutWhatsapp } from "../../utils/msgWhassap.js";
+import logger from "../../services/winston.js";
+import { checkOutEMail } from "../../services/email.js";
+import { checkOutSms, checkOutWhatsapp } from "../../services/msgWhassap.js";
 
 export async function checkOut(req, res) {
     const user = req.user;

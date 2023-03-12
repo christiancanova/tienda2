@@ -1,4 +1,4 @@
-import logger from "../../utils/winston.js";
+import logger from "../../services/winston.js";
 import Products from '../products/productModel.js'
 
 export async function getCartProducts(req, res) {

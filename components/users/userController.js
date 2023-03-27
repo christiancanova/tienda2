@@ -1,6 +1,6 @@
-import logger from '../../services/winston.js'
+import logger from '../../utils/winston.js'
 import User from './userModel.js'
-import {signUpEmail} from '../../services/email.js'
+import {signUpEmail} from '../../utils/email.js'
 
 export async function signUp(req, res) {
   const newUser = new User(req.body);

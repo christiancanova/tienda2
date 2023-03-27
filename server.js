@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 import cluster from 'cluster';
 import os from 'os';
 const numCPUs = os.cpus().length;
-import logger from './services/winston.js'
+import logger from './utils/winston.js'
 
 
 

@@ -4,8 +4,8 @@ import os from "os"; // es propia de node para obtener informacion del sistema
 const nroCPUs = os.cpus().length;
 const router = Router();
 import compression from "compression";
-import logger from "../services/logger.js";
-import getRandom from "../services/getRandom.js";
+import logger from "../utils/logger.js";
+import getRandom from "../utils/getRandom.js";
 
 const info = {
   "Node version": process.version,

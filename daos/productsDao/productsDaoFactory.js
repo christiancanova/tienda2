@@ -1,6 +1,6 @@
-import yargObj from "../../services/yargs.js"
+import yargObj from "../../utils/yargs.js"
 import productsDaoMongo from './productsDaoMongo.js';
-import logger from "../../services/winston.js";
+import logger from "../../utils/winston.js";
 const type = yargObj.persistence.toUpperCase()
 
 

@@ -3,7 +3,7 @@ import session from 'express-session';
 import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
-import router from './router/router.js';
+import routes from './routes/routes.js';
 import conectarDB from './config/db.js';
 import passport from 'passport';
 import { dirname } from 'path';
@@ -68,7 +68,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT;
 
 // Rutas
-router(app);
+routes(app);
 
 
 const mode = process.env.MODE;
